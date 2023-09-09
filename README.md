@@ -134,7 +134,7 @@ POST http://localhost:3000/api/transpose
 }
 ```
 
-### Transpose Matriks
+### Inverse Matriks
 
 Untuk melakukan invers matriks, Anda dapat menggunakan endpoint berikut:
 
