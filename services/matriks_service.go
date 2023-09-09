@@ -1,5 +1,9 @@
 package services
 
+import (
+	"fmt"
+)
+
 func AddMatrix(a [][]int, b [][]int) [][]int {
 	if len(a) != len(b) || len(a[0]) != len(b[0]) {
 		panic("Matrix dimensions do not match")
@@ -79,4 +83,27 @@ func TransposeMatrix(matrix [][]int) [][]int {
 	}
 
 	return transposed
+}
+
+func InverseMatriks(matrix [][]float64) ([][]float64, error) {
+	if len(matrix) != 2 || len(matrix[0]) != 2 || len(matrix[1]) != 2 {
+		return nil, fmt.Errorf("matriks must be 2x2")
+	}
+
+	a := matrix[0][0]
+	b := matrix[0][1]
+	c := matrix[1][0]
+	d := matrix[1][1]
+
+	det := a*d - b*c
+
+	if det == 0 {
+		return nil, fmt.Errorf("matriks tidak memiliki invers karena determinannya nol")
+	}
+
+	inverseMatrix := make([][]float64, 2)
+	inverseMatrix[0] = []float64{d / det, -b / det}
+	inverseMatrix[1] = []float64{-c / det, a / det}
+
+	return inverseMatrix, nil
 }

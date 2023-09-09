@@ -28,3 +28,10 @@ POST http://localhost:3000/api/transpose
 {
   "matrix": [[1,2],[3,4]]
 }
+
+### INVERSE MATRIKS
+POST http://localhost:3000/api/inverse
+
+{
+  "matrix": [[1,2],[3,4]]
+}
