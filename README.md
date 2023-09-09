@@ -19,12 +19,14 @@ POST http://localhost:3000/add
   "matrixA": [[1,2],[3,4]],
   "matrixB": [[5,6],[7,8]]
 }
+```json
 
 ### response
 ```json
 {
   "result": [[6,8],[10,12]]
 }
+```json
 
 ### Pengurangan Matriks
 Untuk melakukan pengurangan antara dua matriks, Anda dapat menggunakan endpoint berikut:
@@ -37,11 +39,13 @@ POST http://localhost:3000/subtract
   "matrixA": [[1,2],[3,4]],
   "matrixB": [[5,6],[7,8]]
 }
+```json
 
 ### response
 ```json
 {
   "result": [[-4,-4],[-4,-4]]
 }
+```json
 
 
