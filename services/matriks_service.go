@@ -37,3 +37,26 @@ func SubtractMatrix(a [][]int, b [][]int) [][]int {
 
 	return result
 }
+
+func MultiplyMatrix(a [][]int, b [][]int) [][]int {
+	rowsA := len(a)
+	colsA := len(a[0])
+	rowsB := len(b)
+	colsB := len(b[0])
+
+	if colsA != rowsB {
+		panic("Matrix dimensions do not match")
+	}
+
+	result := make([][]int, rowsA)
+	for i := 0; i < rowsA; i++ {
+		result[i] = make([]int, colsB)
+		for j := 0; j < colsB; j++ {
+			for k := 0; k < colsA; k++ {
+				result[i][j] += a[i][k] * b[k][j]
+			}
+		}
+	}
+
+	return result
+}

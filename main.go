@@ -11,7 +11,8 @@ import (
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Post("/add", controllers.MatriksPertambahan)
-	r.Post("/subtract", controllers.MatriksPengurangan)
+	r.Post("/api/add", controllers.MatriksPertambahan)
+	r.Post("/api/subtract", controllers.MatriksPengurangan)
+	r.Post("/api/multiply", controllers.MatriksPerkalian)
 	http.ListenAndServe(":3000", r)
 }
