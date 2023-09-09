@@ -12,6 +12,10 @@ type MatrixOperationRequest struct {
 	MatrixB [][]int `json:"matrixB"`
 }
 
+type MatrixOperationTransposeRequest struct {
+	Matrix [][]int `json:"matrix"`
+}
+
 type MatrixOperationResponse struct {
 	Result [][]int `json:"result"`
 }
@@ -52,6 +56,20 @@ func MatriksPerkalian(w http.ResponseWriter, r *http.Request) {
 	}
 
 	result := services.MultiplyMatrix(request.MatrixA, request.MatrixB)
+
+	resultOperation := MatrixOperationResponse{Result: result}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resultOperation)
+}
+
+func MatriksTranspose(w http.ResponseWriter, r *http.Request) {
+	var request MatrixOperationTransposeRequest
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	result := services.TransposeMatrix(request.Matrix)
 
 	resultOperation := MatrixOperationResponse{Result: result}
 	w.Header().Set("Content-Type", "application/json")

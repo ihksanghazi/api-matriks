@@ -60,3 +60,23 @@ func MultiplyMatrix(a [][]int, b [][]int) [][]int {
 
 	return result
 }
+
+func TransposeMatrix(matrix [][]int) [][]int {
+	rows := len(matrix)
+	cols := len(matrix[0])
+
+	// Membuat matriks baru dengan baris dan kolom yang dibalik
+	transposed := make([][]int, cols)
+	for i := 0; i < cols; i++ {
+		transposed[i] = make([]int, rows)
+	}
+
+	// Melakukan transposisi
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			transposed[j][i] = matrix[i][j]
+		}
+	}
+
+	return transposed
+}

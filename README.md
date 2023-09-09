@@ -105,3 +105,31 @@ POST http://localhost:3000/api/multiply
 	]
 }
 ```
+
+### Transpose Matriks
+
+Untuk melakukan transpose matriks, Anda dapat menggunakan endpoint berikut:
+
+### endpoint
+
+POST http://localhost:3000/api/transpose
+
+```json
+{
+	"matrix": [
+		[1, 2],
+		[3, 4]
+	]
+}
+```
+
+### response
+
+```json
+{
+	"result": [
+		[1, 3],
+		[2, 4]
+	]
+}
+```

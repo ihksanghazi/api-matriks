@@ -14,5 +14,6 @@ func main() {
 	r.Post("/api/add", controllers.MatriksPertambahan)
 	r.Post("/api/subtract", controllers.MatriksPengurangan)
 	r.Post("/api/multiply", controllers.MatriksPerkalian)
+	r.Post("/api/transpose", controllers.MatriksTranspose)
 	http.ListenAndServe(":3000", r)
 }
