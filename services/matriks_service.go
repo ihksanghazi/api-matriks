@@ -157,3 +157,33 @@ func ReduceMatrix(matrix [][]float64) [][]float64 {
 
 	return matrix
 }
+
+func CreateIdentityMatrix(size int) [][]int {
+	matrix := make([][]int, size)
+	for i := 0; i < size; i++ {
+		matrix[i] = make([]int, size)
+		for j := 0; j < size; j++ {
+			if i == j {
+				matrix[i][j] = 1
+			} else {
+				matrix[i][j] = 0
+			}
+		}
+	}
+	return matrix
+}
+
+func CreateDiagonalMatrix(size, diagonalValue int) [][]int {
+	matrix := make([][]int, size)
+	for i := 0; i < size; i++ {
+		matrix[i] = make([]int, size)
+		for j := 0; j < size; j++ {
+			if i == j {
+				matrix[i][j] = diagonalValue
+			} else {
+				matrix[i][j] = 0
+			}
+		}
+	}
+	return matrix
+}

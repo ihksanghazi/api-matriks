@@ -214,3 +214,43 @@ POST http://localhost:3000/api/reduce
 	]
 }
 ```
+
+### Create Identity Matriks
+
+Untuk melakukan create indentity matriks, Anda dapat menggunakan endpoint berikut:
+
+### endpoint
+
+POST http://localhost:3000/api/create/identity?size=3
+
+### response
+
+```json
+{
+	"result": [
+		[1, 0, 0],
+		[0, 1, 0],
+		[0, 0, 1]
+	]
+}
+```
+
+### Create Diagonal Matriks
+
+Untuk melakukan create diagonal matriks, Anda dapat menggunakan endpoint berikut:
+
+### endpoint
+
+POST http://localhost:3000/api/create/diagonal?size=3&diagonal=5
+
+### response
+
+```json
+{
+	"result": [
+		[5, 0, 0],
+		[0, 5, 0],
+		[0, 0, 5]
+	]
+}
+```

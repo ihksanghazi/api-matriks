@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"github.com/ihksanghazi/api-matriks/services"
 )
@@ -116,6 +117,45 @@ func MatriksReduce(w http.ResponseWriter, r *http.Request) {
 	}
 
 	result := services.ReduceMatrix(request.Matrix)
+
+	resultOperation := MatrixOperationResponse{Result: result}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resultOperation)
+}
+
+func MatriksCreateIdentity(w http.ResponseWriter, r *http.Request) {
+	size := r.URL.Query().Get("size")
+
+	value, err := strconv.Atoi(size)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	result := services.CreateIdentityMatrix(value)
+
+	resultOperation := MatrixOperationResponse{Result: result}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resultOperation)
+}
+
+func MatriksCreateDiagonal(w http.ResponseWriter, r *http.Request) {
+	size := r.URL.Query().Get("size")
+	diagonal := r.URL.Query().Get("diagonal")
+
+	valueSize, errSize := strconv.Atoi(size)
+	if errSize != nil {
+		http.Error(w, errSize.Error(), http.StatusBadRequest)
+		return
+	}
+
+	valueDiagonal, errDiagonal := strconv.Atoi(diagonal)
+	if errDiagonal != nil {
+		http.Error(w, errDiagonal.Error(), http.StatusBadRequest)
+		return
+	}
+
+	result := services.CreateDiagonalMatrix(valueSize, valueDiagonal)
 
 	resultOperation := MatrixOperationResponse{Result: result}
 	w.Header().Set("Content-Type", "application/json")

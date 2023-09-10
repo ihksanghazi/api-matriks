@@ -18,5 +18,7 @@ func main() {
 	r.Post("/api/inverse", controllers.MatriksInverse)
 	r.Post("/api/determinan", controllers.MatriksDeterminan)
 	r.Post("/api/reduce", controllers.MatriksReduce)
+	r.Get("/api/create/identity", controllers.MatriksCreateIdentity)
+	r.Get("/api/create/diagonal", controllers.MatriksCreateDiagonal)
 	http.ListenAndServe(":3000", r)
 }

@@ -49,3 +49,9 @@ POST http://localhost:3000/api/reduce
 {
   "matrix": [[1,2],[3,4]]
 }
+
+### IDENTITY MATRIKS
+GET http://localhost:3000/api/create/identity?size=3
+
+### Diagonal MATRIKS
+GET http://localhost:3000/api/create/diagonal?size=3&diagonal=5
