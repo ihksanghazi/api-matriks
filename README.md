@@ -221,7 +221,7 @@ Untuk melakukan create indentity matriks, Anda dapat menggunakan endpoint beriku
 
 ### endpoint
 
-POST http://localhost:3000/api/create/identity?size=3
+GET http://localhost:3000/api/create/identity?size=3
 
 ### response
 
@@ -241,7 +241,7 @@ Untuk melakukan create diagonal matriks, Anda dapat menggunakan endpoint berikut
 
 ### endpoint
 
-POST http://localhost:3000/api/create/diagonal?size=3&diagonal=5
+GET http://localhost:3000/api/create/diagonal?size=3&diagonal=5
 
 ### response
 
