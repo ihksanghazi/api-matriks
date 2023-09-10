@@ -107,3 +107,17 @@ func MatriksDeterminan(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resultOperation)
 }
+
+func MatriksReduce(w http.ResponseWriter, r *http.Request) {
+	var request MatrixOperationSingleRequest
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	result := services.ReduceMatrix(request.Matrix)
+
+	resultOperation := MatrixOperationResponse{Result: result}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resultOperation)
+}

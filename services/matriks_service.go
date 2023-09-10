@@ -112,3 +112,48 @@ func DeterminantMatriks(arr [][]float64) float64 {
 	determinant := (arr[0][0] * arr[1][1]) - (arr[0][1] * arr[1][0])
 	return determinant
 }
+
+func ReduceMatrix(matrix [][]float64) [][]float64 {
+	rows := len(matrix)
+	cols := len(matrix[0])
+
+	// Inisialisasi indeks baris dan kolom
+	i := 0
+	j := 0
+
+	for i < rows && j < cols {
+		// Temukan baris dengan elemen terbesar pada kolom ke-j
+		maxRow := i
+		for k := i + 1; k < rows; k++ {
+			if matrix[k][j] > matrix[maxRow][j] {
+				maxRow = k
+			}
+		}
+
+		// Tukar baris terbesar dengan baris saat ini (baris ke-i)
+		for k := j; k < cols; k++ {
+			matrix[i][k], matrix[maxRow][k] = matrix[maxRow][k], matrix[i][k]
+		}
+
+		// Membuat elemen diagonal menjadi 1
+		pivot := matrix[i][j]
+		for k := j; k < cols; k++ {
+			matrix[i][k] /= pivot
+		}
+
+		// Mengurangkan baris lain dari baris saat ini
+		for k := 0; k < rows; k++ {
+			if k != i {
+				factor := matrix[k][j]
+				for l := j; l < cols; l++ {
+					matrix[k][l] -= factor * matrix[i][l]
+				}
+			}
+		}
+
+		i++
+		j++
+	}
+
+	return matrix
+}

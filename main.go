@@ -17,5 +17,6 @@ func main() {
 	r.Post("/api/transpose", controllers.MatriksTranspose)
 	r.Post("/api/inverse", controllers.MatriksInverse)
 	r.Post("/api/determinan", controllers.MatriksDeterminan)
+	r.Post("/api/reduce", controllers.MatriksReduce)
 	http.ListenAndServe(":3000", r)
 }

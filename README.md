@@ -186,3 +186,31 @@ POST http://localhost:3000/api/determinan
 	"result": -2
 }
 ```
+
+### Reduce Matriks
+
+Untuk melakukan reduce matriks, Anda dapat menggunakan endpoint berikut:
+
+### endpoint
+
+POST http://localhost:3000/api/reduce
+
+```json
+{
+	"matrix": [
+		[1, 2],
+		[3, 4]
+	]
+}
+```
+
+### response
+
+```json
+{
+	"result": [
+		[1, 0],
+		[0, 1]
+	]
+}
+```

@@ -42,3 +42,10 @@ POST http://localhost:3000/api/determinan
 {
   "matrix": [[1,2],[3,4]]
 }
+
+### REDUCE MATRIKS
+POST http://localhost:3000/api/reduce
+
+{
+  "matrix": [[1,2],[3,4]]
+}
