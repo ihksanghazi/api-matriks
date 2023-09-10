@@ -161,3 +161,28 @@ POST http://localhost:3000/api/inverse
 	]
 }
 ```
+
+### Determinan Matriks
+
+Untuk melakukan determinan matriks, Anda dapat menggunakan endpoint berikut:
+
+### endpoint
+
+POST http://localhost:3000/api/determinan
+
+```json
+{
+	"matrix": [
+		[1, 2],
+		[3, 4]
+	]
+}
+```
+
+### response
+
+```json
+{
+	"result": -2
+}
+```

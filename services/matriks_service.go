@@ -65,14 +65,14 @@ func MultiplyMatrix(a [][]int, b [][]int) [][]int {
 	return result
 }
 
-func TransposeMatrix(matrix [][]int) [][]int {
+func TransposeMatrix(matrix [][]float64) [][]float64 {
 	rows := len(matrix)
 	cols := len(matrix[0])
 
 	// Membuat matriks baru dengan baris dan kolom yang dibalik
-	transposed := make([][]int, cols)
+	transposed := make([][]float64, cols)
 	for i := 0; i < cols; i++ {
-		transposed[i] = make([]int, rows)
+		transposed[i] = make([]float64, rows)
 	}
 
 	// Melakukan transposisi
@@ -106,4 +106,9 @@ func InverseMatriks(matrix [][]float64) ([][]float64, error) {
 	inverseMatrix[1] = []float64{-c / det, a / det}
 
 	return inverseMatrix, nil
+}
+
+func DeterminantMatriks(arr [][]float64) float64 {
+	determinant := (arr[0][0] * arr[1][1]) - (arr[0][1] * arr[1][0])
+	return determinant
 }

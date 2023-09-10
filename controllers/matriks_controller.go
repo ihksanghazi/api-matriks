@@ -13,17 +13,11 @@ type MatrixOperationRequest struct {
 }
 
 type MatrixOperationSingleRequest struct {
-	Matrix [][]int `json:"matrix"`
-}
-type MatrixOperationInverseRequest struct {
 	Matrix [][]float64 `json:"matrix"`
 }
 
 type MatrixOperationResponse struct {
-	Result [][]int `json:"result"`
-}
-type MatrixOperationInverseResponse struct {
-	Result [][]float64 `json:"result"`
+	Result interface{} `json:"result"`
 }
 
 func MatriksPertambahan(w http.ResponseWriter, r *http.Request) {
@@ -83,7 +77,7 @@ func MatriksTranspose(w http.ResponseWriter, r *http.Request) {
 }
 
 func MatriksInverse(w http.ResponseWriter, r *http.Request) {
-	var request MatrixOperationInverseRequest
+	var request MatrixOperationSingleRequest
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -95,7 +89,21 @@ func MatriksInverse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resultOperation := MatrixOperationInverseResponse{Result: result}
+	resultOperation := MatrixOperationResponse{Result: result}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resultOperation)
+}
+
+func MatriksDeterminan(w http.ResponseWriter, r *http.Request) {
+	var request MatrixOperationSingleRequest
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	result := services.DeterminantMatriks(request.Matrix)
+
+	resultOperation := MatrixOperationResponse{Result: result}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resultOperation)
 }
